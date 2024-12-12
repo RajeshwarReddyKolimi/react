@@ -10,10 +10,20 @@ export default function RegistrationForm() {
     color: "#a02a2a",
   });
 
+  function getPasswordStrength(str) {
+    let count = 0;
+    if (str.length > 8) count++;
+    if (/[A-Z]/.test(str)) count++;
+    if (/[a-z]/.test(str)) count++;
+    if (/[0-9]/.test(str)) count++;
+    if (/[^A-Za-z0-9]/.test(str)) count++;
+    return count;
+  }
+
   function handlePasswordStrengthCalculation(e) {
-    if (e.target.value?.trim()?.length < 8) setPasswordStrength("Low");
-    else if (e.target.value?.trim()?.length < 12)
-      setPasswordStrength("Moderate");
+    const count = getPasswordStrength(e.target.value);
+    if (count < 3) setPasswordStrength("Low");
+    else if (count < 5) setPasswordStrength("Moderate");
     else setPasswordStrength("High");
     setPasswordError(null);
   }
@@ -36,15 +46,6 @@ export default function RegistrationForm() {
     }
     setSuccessMessage("Registration successful!");
   }
-
-  useEffect(() => {
-    if (passwordStrength === "Moderate")
-      setPasswordStrengthStyle({ color: "#edbe3e" });
-    else if (passwordStrength === "High")
-      setPasswordStrengthStyle({ color: "#138601" });
-    else setPasswordStrengthStyle({ color: "#a02a2a" });
-  }, [passwordStrength]);
-
   return (
     <>
       {successMessage ? (
@@ -86,7 +87,16 @@ export default function RegistrationForm() {
             </label>
             {passwordError && <p>{passwordError}</p>}
             {passwordStrength && (
-              <p style={{ passwordStrengthStyle }}>
+              <p
+                style={{
+                  color:
+                    passwordStrength === "High"
+                      ? "#138601"
+                      : passwordStrength === "Moderate"
+                      ? "#edbe3e"
+                      : "#a02a2a",
+                }}
+              >
                 Password Strength: {passwordStrength}
               </p>
             )}
