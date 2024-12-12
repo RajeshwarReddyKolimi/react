@@ -1,0 +1,99 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+button {
+  color: white;
+  font-weight: 600;
+  background-color: rgb(13, 44, 66);
+  padding: 0.75rem 1rem;
+  border-radius: 0.25rem;
+  border: none;
+  cursor: pointer;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4rem;
+  background-color: white;
+  box-shadow: 0 0 4px 1px rgb(207, 207, 207);
+}
+nav > ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+.nav-buffer {
+  margin-top: 5rem;
+}
+.products-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.product-card {
+  border-radius: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(224, 235, 240);
+  padding: 1rem;
+}
+
+.product-image {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+}
+
+.cart-backdrop {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.cart {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  position: fixed;
+  top: 5rem;
+  bottom: 5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  width: 90vw;
+  max-width: 700px;
+  /* height: 70vh;
+  max-height: 500px; */
+  overflow-y: scroll;
+}
+
+.cart-close-button {
+  color: black;
+  font-size: 1.5rem;
+  background-color: unset;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+}
