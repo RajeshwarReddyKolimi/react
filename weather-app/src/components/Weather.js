@@ -4,7 +4,7 @@ import Loader from "./Loader";
 import Error from "./Error";
 import { TiWeatherPartlySunny } from "react-icons/ti";
 
-export default function Weather({ location, url }) {
+export default function Weather({ location }) {
   const { isPending, error, data } = useQuery({
     queryKey: ["weatherData", location],
     queryFn: () =>
