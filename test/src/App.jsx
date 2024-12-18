@@ -1,19 +1,12 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-import Form from "./components/Form";
-import Xml from "./components/Xml";
-import ReactQuery from "./components/ReactQuery";
-
-function App() {
+import React from "react";
+import { atom, RecoilRoot } from "recoil";
+import Counter from "./components/Counter";
+import { store } from "./store";
+import { Provider } from "react-redux";
+export default function App() {
   return (
-    <>
-      {/* <Form /> */}
-      {/* <Xml /> */}
-      <ReactQuery />
-    </>
+    <Provider store={store}>
+      <Counter />
+    </Provider>
   );
 }
-
-export default App;

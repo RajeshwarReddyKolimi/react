@@ -17,8 +17,8 @@ export default function Weather({ location }) {
     return Math.round((k - 277) * 100) / 100;
   }
   if (isPending) return <Loader />;
-  if (error) return <Error error={error} />;
-  if ((data?.cod / 100) % 10 !== 2) return <Error error={data} />;
+  if (error) return <Error error={error?.message} />;
+  if ((data?.cod / 100) % 10 !== 2) return <Error error={data?.cod} />;
   return (
     <h1>
       <TiWeatherPartlySunny /> {toCelsius(data?.main?.temp)} &deg;C{" "}
